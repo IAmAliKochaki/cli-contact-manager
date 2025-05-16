@@ -8,7 +8,7 @@
 const char *FILE_NAME = "../db/contacts.dat";
 
 Contact *contacts = NULL;
-int contact_count;
+int contact_count = 0;
 
 
 static int is_phone_unique(char *phone)
