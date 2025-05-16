@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "contact.h"
+#include "menu.h"
 
 #define MAX_CONTACTS 100
 
@@ -157,8 +158,10 @@ void view_all_contact()
 void run()
 {
     contacts = (Contact *)malloc(MAX_CONTACTS * sizeof(Contact));
-    
-    // main-menu();
+
+    load(FILE_NAME);
+        
+    main_menu();
     
     free(contacts);
 }
