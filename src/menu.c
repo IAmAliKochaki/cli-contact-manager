@@ -4,23 +4,39 @@
 #include "menu.h"
 #include "contact_manager.h"
 
+static void trim_newline(char *str) {
+    str[strcspn(str, "\n")] = '\0';
+}
+
 static void add_contact_menu()
 {
     printf("Enter the name:");
     char name[MAX_NAME] = {'0'};
     fgets(name, MAX_NAME, stdin);
+    trim_newline(name);
+    if (strlen(name) == 0) {
+        printf("name cannot be null\n");
+        return;
+    }
 
     printf("Enter the phone:");
     char phone[MAX_PHONE] = {'0'};
     fgets(phone, MAX_PHONE, stdin);
+    trim_newline(phone);
+    if (strlen(phone) == 0) {
+        printf("phone cannot be null\n");
+        return;
+    }
 
     printf("Enter the email:");
     char email[MAX_EMAIL] = {'0'};
     fgets(email, MAX_EMAIL, stdin);
+    trim_newline(email);
 
     printf("Enter the address:");
     char address[MAX_ADDRESS] = {'0'};
     fgets(address, MAX_ADDRESS, stdin);
+    trim_newline(address);
 
     add_contact(create_new_contact(name, phone, email, address));
 }
@@ -30,6 +46,7 @@ static void delete_contact_menu()
     printf("Enter the name:");
     char name[MAX_NAME] = {'0'};
     fgets(name, MAX_NAME, stdin);
+    trim_newline(name);
 
     delete_contact(name);
 }
@@ -39,6 +56,7 @@ static void search_contact_menu()
     printf("Enter the name:");
     char name[MAX_NAME] = {'0'};
     fgets(name, MAX_NAME, stdin);
+    trim_newline(name);
 
     search_contact(name);
 }
