@@ -83,7 +83,7 @@ static int find_contact_by_name(char *name)
     return -1;
 }
 
-int add_contact(Contact new_contact)
+void add_contact(Contact new_contact)
 {
     // IF FULL
     if (contact_count >= MAX_CONTACTS)

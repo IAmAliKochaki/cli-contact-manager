@@ -5,7 +5,7 @@
 #include "contact.h"
 
 void run();
-int add_contact(Contact contact);
+void add_contact(Contact contact);
 void view_all_contact();
 void search_contact(char *name);
 void delete_contact(char *name);
