@@ -51,14 +51,23 @@ static int is_file_empty(const char *filename)
 static void load(const char *filename)
 {
     FILE *file = fopen(filename, "rb");
+
+    // If the file does not exist, create an empty one
     if (!file)
     {
-        perror("Error opening file for reading");
+        file = fopen(filename, "wb");
+        if (!file)
+        {
+            perror("Error creating new contact file");
+            return;
+        }
+        contact_count = 0;
+        fwrite(&contact_count, sizeof(int), 1, file);
+        fclose(file);
         return;
     }
 
     fread(&contact_count, sizeof(int), 1, file);
-
     fread(contacts, sizeof(Contact), contact_count, file);
     fclose(file);
 }
